@@ -1055,7 +1055,7 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
                                   CGRectGetMinY(outerRect) - _arrowHeight);
       arrowBasePointA = CGPointMake(arrowTipPoint.x - _arrowBase / 2,
                                     arrowTipPoint.y + _arrowHeight);
-      arrowBasePointB = CGPointMake(arrowTipPoint.x + _arrowBase / 2,
+      arrowBasePointB = CGPointMake(arrowTipPoint.x,
                                     arrowTipPoint.y + _arrowHeight);
 
       CGPathMoveToPoint(outerPathRef, NULL, arrowBasePointA.x, arrowBasePointA.y);
