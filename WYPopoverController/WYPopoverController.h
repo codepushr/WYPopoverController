@@ -74,6 +74,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 @property (nonatomic, assign) NSUInteger borderWidth                        UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger arrowBase                          UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger arrowHeight                        UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) BOOL useSpacyArrow                            UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, strong) UIColor *outerShadowColor                     UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *outerStrokeColor                     UI_APPEARANCE_SELECTOR;
@@ -251,6 +252,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 @property (nonatomic, assign) NSUInteger  borderWidth;
 @property (nonatomic, assign) NSUInteger  arrowBase;
 @property (nonatomic, assign) NSUInteger  arrowHeight;
+@property (nonatomic, assign) BOOL useSpacyArrow;
 
 @property (nonatomic, strong) UIColor *outerShadowColor;
 @property (nonatomic, strong) UIColor *outerStrokeColor;
