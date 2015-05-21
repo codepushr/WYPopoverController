@@ -48,11 +48,18 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverArrowDirection) {
   WYPopoverArrowDirectionUnknown = NSUIntegerMax
 };
 
+typedef NS_OPTIONS(NSUInteger, WYPopoverArrowStyle) {
+  WYPopoverArrowStyleLeftHalf = 1UL << 0,
+  WYPopoverArrowStyleRightHalf = 1UL << 0,
+  WYPopoverArrowStyleFull = WYPopoverArrowStyleLeftHalf | WYPopoverArrowStyleRightHalf,
+};
+
 typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
   WYPopoverAnimationOptionFade = 1UL << 0,            // default
   WYPopoverAnimationOptionScale = 1UL << 1,
   WYPopoverAnimationOptionFadeWithScale = WYPopoverAnimationOptionFade | WYPopoverAnimationOptionScale
 };
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +81,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 @property (nonatomic, assign) NSUInteger borderWidth                        UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger arrowBase                          UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger arrowHeight                        UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) BOOL useSpacyArrow                            UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) WYPopoverArrowStyle arrowStyle                UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, strong) UIColor *outerShadowColor                     UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *outerStrokeColor                     UI_APPEARANCE_SELECTOR;
@@ -252,7 +259,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 @property (nonatomic, assign) NSUInteger  borderWidth;
 @property (nonatomic, assign) NSUInteger  arrowBase;
 @property (nonatomic, assign) NSUInteger  arrowHeight;
-@property (nonatomic, assign) BOOL useSpacyArrow;
+@property (nonatomic, assign) WYPopoverArrowStyle arrowStyle;
 
 @property (nonatomic, strong) UIColor *outerShadowColor;
 @property (nonatomic, strong) UIColor *outerStrokeColor;

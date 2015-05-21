@@ -432,7 +432,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
   result.borderWidth = 6;
   result.arrowBase = 42;
   result.arrowHeight = 18;
-  result.useSpacyArrow = NO;
+  result.arrowStyle = WYPopoverArrowStyleFull;
   result.outerShadowColor = [UIColor colorWithWhite:0 alpha:0.75];
   result.outerShadowBlurRadius = 8;
   result.outerShadowOffset = CGSizeMake(0, 2);
@@ -467,7 +467,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
   result.borderWidth = 0;
   result.arrowBase = 25;
   result.arrowHeight = 13;
-  result.useSpacyArrow = NO;
+  result.arrowStyle = WYPopoverArrowStyleFull;
   result.outerShadowColor = [UIColor clearColor];
   result.outerShadowBlurRadius = 0;
   result.outerShadowOffset = CGSizeZero;
@@ -1055,9 +1055,9 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
     if (_arrowDirection == WYPopoverArrowDirectionUp) {
       arrowTipPoint = CGPointMake(CGRectGetMidX(outerRect) + _arrowOffset,
                                   CGRectGetMinY(outerRect) - _arrowHeight);
-      arrowBasePointA = CGPointMake(arrowTipPoint.x - _arrowBase / 2,
+      arrowBasePointA = CGPointMake(arrowTipPoint.x - ((_arrowStyle & WYPopoverArrowStyleLeftHalf) ? 0 : (_arrowBase / 2)),
                                     arrowTipPoint.y + _arrowHeight);
-      arrowBasePointB = CGPointMake(arrowTipPoint.x + (_useSpacyArrow ? 0 : (_arrowBase / 2)),
+      arrowBasePointB = CGPointMake(arrowTipPoint.x + ((_arrowStyle & WYPopoverArrowStyleRightHalf) ? 0 : (_arrowBase / 2)),
                                     arrowTipPoint.y + _arrowHeight);
 
       CGPathMoveToPoint(outerPathRef, NULL, arrowBasePointA.x, arrowBasePointA.y);
@@ -1544,7 +1544,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
     _theme.borderWidth = appearance.borderWidth;
     _theme.arrowBase = appearance.arrowBase;
     _theme.arrowHeight = appearance.arrowHeight;
-    _theme.useSpacyArrow = appearance.useSpacyArrow;
+    _theme.arrowStyle = appearance.arrowStyle;
     _theme.outerShadowColor = appearance.outerShadowColor;
     _theme.outerShadowBlurRadius = appearance.outerShadowBlurRadius;
     _theme.outerShadowOffset = appearance.outerShadowOffset;
@@ -1625,7 +1625,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
     _backgroundView.borderWidth = _theme.borderWidth;
     _backgroundView.arrowBase = _theme.arrowBase;
     _backgroundView.arrowHeight = _theme.arrowHeight;
-    _backgroundView.useSpacyArrow = _theme.useSpacyArrow;
+    _backgroundView.arrowStyle = _backgroundView.arrowStyle;
     _backgroundView.outerShadowColor = _theme.outerShadowColor;
     _backgroundView.outerShadowBlurRadius = _theme.outerShadowBlurRadius;
     _backgroundView.outerShadowOffset = _theme.outerShadowOffset;
