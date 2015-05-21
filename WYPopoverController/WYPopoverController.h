@@ -49,8 +49,9 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverArrowDirection) {
 };
 
 typedef NS_OPTIONS(NSUInteger, WYPopoverArrowStyle) {
+  WYPopoverArrowStyleNone = 0,
   WYPopoverArrowStyleLeftHalf = 1UL << 0,
-  WYPopoverArrowStyleRightHalf = 1UL << 0,
+  WYPopoverArrowStyleRightHalf = 1UL << 1,
   WYPopoverArrowStyleFull = WYPopoverArrowStyleLeftHalf | WYPopoverArrowStyleRightHalf,
 };
 

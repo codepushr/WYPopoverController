@@ -529,7 +529,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
 }
 
 - (NSArray *)observableKeypaths {
-  return [NSArray arrayWithObjects:@"tintColor", @"outerStrokeColor", @"innerStrokeColor", @"fillTopColor", @"fillBottomColor", @"glossShadowColor", @"glossShadowOffset", @"glossShadowBlurRadius", @"borderWidth", @"arrowBase", @"arrowHeight", @"useSpacyArrow", @"outerShadowColor", @"outerShadowBlurRadius", @"outerShadowOffset", @"outerCornerRadius", @"innerShadowColor", @"innerShadowBlurRadius", @"innerShadowOffset", @"innerCornerRadius", @"viewContentInsets", @"overlayColor", nil];
+  return [NSArray arrayWithObjects:@"tintColor", @"outerStrokeColor", @"innerStrokeColor", @"fillTopColor", @"fillBottomColor", @"glossShadowColor", @"glossShadowOffset", @"glossShadowBlurRadius", @"borderWidth", @"arrowBase", @"arrowHeight", @"arrowStyle", @"outerShadowColor", @"outerShadowBlurRadius", @"outerShadowOffset", @"outerCornerRadius", @"innerShadowColor", @"innerShadowBlurRadius", @"innerShadowOffset", @"innerCornerRadius", @"viewContentInsets", @"overlayColor", nil];
 }
 
 @end
@@ -1055,9 +1055,10 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
     if (_arrowDirection == WYPopoverArrowDirectionUp) {
       arrowTipPoint = CGPointMake(CGRectGetMidX(outerRect) + _arrowOffset,
                                   CGRectGetMinY(outerRect) - _arrowHeight);
-      arrowBasePointA = CGPointMake(arrowTipPoint.x - ((_arrowStyle & WYPopoverArrowStyleLeftHalf) ? 0 : (_arrowBase / 2)),
+        
+        arrowBasePointA = CGPointMake(arrowTipPoint.x - ((_arrowStyle & WYPopoverArrowStyleLeftHalf) ? (_arrowBase / 2) : 0),
                                     arrowTipPoint.y + _arrowHeight);
-      arrowBasePointB = CGPointMake(arrowTipPoint.x + ((_arrowStyle & WYPopoverArrowStyleRightHalf) ? 0 : (_arrowBase / 2)),
+        arrowBasePointB = CGPointMake(arrowTipPoint.x + ((_arrowStyle & WYPopoverArrowStyleRightHalf) ? (_arrowBase / 2) : 0),
                                     arrowTipPoint.y + _arrowHeight);
 
       CGPathMoveToPoint(outerPathRef, NULL, arrowBasePointA.x, arrowBasePointA.y);
@@ -1492,6 +1493,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
     appearance.borderWidth = aTheme.borderWidth;
     appearance.arrowBase = aTheme.arrowBase;
     appearance.arrowHeight = aTheme.arrowHeight;
+    appearance.arrowStyle = aTheme.arrowStyle;
     appearance.outerShadowColor = aTheme.outerShadowColor;
     appearance.outerShadowBlurRadius = aTheme.outerShadowBlurRadius;
     appearance.outerShadowOffset = aTheme.outerShadowOffset;
@@ -1625,7 +1627,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
     _backgroundView.borderWidth = _theme.borderWidth;
     _backgroundView.arrowBase = _theme.arrowBase;
     _backgroundView.arrowHeight = _theme.arrowHeight;
-    _backgroundView.arrowStyle = _backgroundView.arrowStyle;
+    _backgroundView.arrowStyle = _theme.arrowStyle;
     _backgroundView.outerShadowColor = _theme.outerShadowColor;
     _backgroundView.outerShadowBlurRadius = _theme.outerShadowBlurRadius;
     _backgroundView.outerShadowOffset = _theme.outerShadowOffset;
