@@ -1056,9 +1056,9 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
       arrowTipPoint = CGPointMake(CGRectGetMidX(outerRect) + _arrowOffset,
                                   CGRectGetMinY(outerRect) - _arrowHeight);
         
-        arrowBasePointA = CGPointMake(arrowTipPoint.x - ((_arrowStyle & WYPopoverArrowStyleLeftHalf) ? (_arrowBase / 2) : 0),
+      arrowBasePointA = CGPointMake(arrowTipPoint.x - ((_arrowStyle & WYPopoverArrowStyleLeftHalf) ? (_arrowBase / 2) : 0),
                                     arrowTipPoint.y + _arrowHeight);
-        arrowBasePointB = CGPointMake(arrowTipPoint.x + ((_arrowStyle & WYPopoverArrowStyleRightHalf) ? (_arrowBase / 2) : 0),
+      arrowBasePointB = CGPointMake(arrowTipPoint.x + ((_arrowStyle & WYPopoverArrowStyleRightHalf) ? (_arrowBase / 2) : 0),
                                     arrowTipPoint.y + _arrowHeight);
 
       CGPathMoveToPoint(outerPathRef, NULL, arrowBasePointA.x, arrowBasePointA.y);
